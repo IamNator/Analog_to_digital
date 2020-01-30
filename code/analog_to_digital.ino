@@ -22,7 +22,7 @@ void loop() {
 
 int RpmFunction(){
 
-    float rpm_speed; 
+    int rpm_speed; 
     float analog_read_speed_value = 0; //initialize speed value as zero
     float volt_speed;
     
@@ -36,7 +36,7 @@ int RpmFunction(){
   // volt_speed = volt_speed/0.2; 
     delay(500);
 
-    rpm_speed = (volt_speed * 3000)/1.7; //since an rpm of 3000 corresponds to 1.7volts
+    rpm_speed = (int) (volt_speed * 3000)/1.7;  //since an rpm of 3000 corresponds to 1.7volts
     
     Serial.print("Analog read value : ");
     Serial.println(analog_read_speed_value);
