@@ -27,7 +27,7 @@ int RpmFunction(){
     float volt_speed;
     
   //  for(int i=0; i<150; i++){
-    analog_read_speed_value = analogRead(SpeedSensor); //reads speed value (range between 0 to 1024)
+    analog_read_rpm = analogRead(SpeedSensor); //reads speed value (range between 0 to 1024)
   // }
     delay(15); 
     //Speed_value = Speed_value/150;
