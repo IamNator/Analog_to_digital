@@ -34,10 +34,10 @@ int RpmFunction(){
   
     volt_speed = (analog_read_rpm * 5)/1024; //5volts corresponds to a 1024 measured input
   // volt_speed = volt_speed/0.2; 
-    delay(500);
-
     rpm_speed = (int) (volt_speed * 3000)/1.7;  //since an rpm of 3000 corresponds to 1.7volts
     
+    /****** For easy debugging **********/
+
     Serial.print("Analog read value : ");
     Serial.println(analog_read_rpm);
 
@@ -47,18 +47,40 @@ int RpmFunction(){
     Serial.print("RPM is: ");
     Serial.print(rpm_speed); 
 
+/*********************************/
+
+
  return rpm_speed;
 }
 
+
+
+
 int TorqueFunction(){
+
   int newton_meter_torque = 0;
   float analog_read_torque = 0;
   float volt_torque = 0;
 
-  analog_read_torque = analogRead(TorqueSensor);
+  analog_read_torque = analogRead(TorqueSensor); 
   delay(10);
 
-  volt_torque = analog_read_torque;
+  volt_torque = analog_read_torque * 5/1024;
+  newton_meter_torque = volt_torque * 2000/3.5; // volt_torque * valueoftorque@/valueofVolt@ ;
+
+
+  /* for easy debugging with laptop or serial monitor */
+
+  Serial.print("Analog read torque : ");
+  Serial.println(analog_read_torque);
+
+  Serial.print("Volt read torque : ");
+  Serial.println(volt_torque);
+
+  Serial.print("torque in Nm :");
+  Serial.println(newton_meter_torque); 
+
+  /***************/
 
   return newton_meter_torque;
 }
