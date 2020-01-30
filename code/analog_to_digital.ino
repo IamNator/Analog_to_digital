@@ -8,7 +8,7 @@ void setup() {
   Serial.begin(9600); //sets up the baud rate for UART communication serial monitor of screen.
 }
 
-int RpmFunction();
+int RpmFunction(); 
 int TorqueFunction();
 
 
@@ -41,7 +41,7 @@ int RpmFunction(){
     Serial.print("Analog read value : ");
     Serial.println(analog_read_rpm);
 
-    Serial.print("volts from RPM meter is :")
+    Serial.print("volts from RPM meter is :");
     Serial.println(volt_speed);
 
     Serial.print("RPM is: ");
