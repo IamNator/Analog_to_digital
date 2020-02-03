@@ -1,21 +1,66 @@
+#include <Wire.h> 
+#include "LiquidCrystal_I2C.h"
+
+LiquidCrystal_I2C lcd(0x3F,20,4);  // set the LCD address to 0x3F for a 16 chars and 2 line display
+
+
 int SpeedSensor = A0;
 int TorqueSensor = A1;
+int VoltageSensor = A2;
 
 void setup() {
     // put your setup code here, to run once:
   pinMode(SpeedSensor, INPUT); //Sets Speed sensor pin as an input pin
   pinMode(TorqueSensor, INPUT); //Sets Toque sensor pin as an input pin 
   Serial.begin(9600); //sets up the baud rate for UART communication serial monitor of screen.
+
+
+
+  lcd.init();                      // initialize the lcd 
+  lcd.begin(16,2);  //Screen size
+  // Print a message to the LCD.
+  lcd.backlight();
+  lcd.setCursor(0,0);
+  lcd.print("Analog to digi-");
+  lcd.setCursor(0,1);
+  lcd.print("tal");
+  lcd.setCursor(5,1);
+  lcd.print("Converter.");
+  delay(3000);
 }
+
+
 
 int RpmFunction();
 int TorqueFunction();
+float voltageFunction();
 
 
 
 void loop() {
-  RpmFunction();
-  TorqueFunction();   
+  lcd.clear();
+  /* .. for rpm .. */
+  lcd.setCursor(0,0);
+  lcd.print("RPM:");
+  lcd.setCursor(5,0);
+  lcd.print(RpmFunction());
+  lcd.setCursor(10,0);
+  lcd.print("rpm");
+
+  /*...for torque display */
+  lcd.setCursor(0,1);
+  lcd.print("Torque: ");
+  lcd.setCursor(8,1); 
+  lcd.print(TorqueFunction());  
+  lcd.setCursor(13,1);
+  lcd.print("Nm");
+
+//  lcd.setCursor(11,0);
+//  lcd.print(voltageFunction() * 10);
+//  lcd.setCursor(15,0);
+//  lcd.print("V");
+  
+  delay(5000); //Refresh every 5 seconds
 }
   
 
@@ -83,4 +128,19 @@ int TorqueFunction(){
   /***************/
 
   return newton_meter_torque;
+}
+ 
+
+float voltageFunction(){
+  float R1 = 7500, R2 = 30000;
+  float volts=0;
+  float volts_analog;
+  volts_analog = analogRead(VoltageSensor);
+  float voltTemporal = (volts_analog * 5.0)/1024.0;
+  
+  volts = voltTemporal/ (R2/(R1+R2));
+  
+  
+
+return volts;
 }
