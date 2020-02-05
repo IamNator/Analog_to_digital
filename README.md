@@ -10,5 +10,8 @@ Changes revolution and torque measurement from analog measuring equipment to dig
 ### Image of a Part of the project
 ![part of the project](https://github.com/IamNator/Analog_to_digital/blob/master/public/fritzing_example_bb_2_hJdn0YtrP6.png)
 
+### Finished product
+![Finished product](https://github.com/IamNator/Analog_to_digital/blob/master/public/20200203_072846.jpg)
+
 ### Arduino pin out
 ![Arduino pin out](https://github.com/IamNator/Analog_to_digital/blob/master/public/Arduino_pinout.png)
