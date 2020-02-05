@@ -44,8 +44,8 @@ void loop() {
   if (loops%10 == 0){
     
     /****for voltage*****/
-    lcd.setCursor(2,0);
-    lcd.print("Voltage :");
+    lcd.setCursor(0,0);
+    lcd.print("Voltage:");
     lcd.setCursor(11,0);
     lcd.print(voltageFunction());
     lcd.setCursor(0,1);
@@ -128,7 +128,7 @@ float TorqueFunction(){
   analog_read_torque = analogRead(TorqueSensor); 
   delay(10);
 
-  volt_torque = analog_read_torque * 5/1024;
+  volt_torque = analog_read_torque * voltageFunction()/1024;
   newton_meter_torque = volt_torque * 1.581787606/1.23; // volt_torque * valueoftorque@/valueofVolt@ ; 1 inch lbs 0.112984829 Nm
 
 
