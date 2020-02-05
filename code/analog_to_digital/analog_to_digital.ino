@@ -32,12 +32,29 @@ void setup() {
 
 
 int RpmFunction();
-int TorqueFunction();
+float TorqueFunction();
 float voltageFunction();
-
+int loops = 0;
 
 
 void loop() {
+  loops++;
+  lcd.clear();
+
+  if (loops%10 == 0){
+    
+    /****for voltage*****/
+    lcd.setCursor(2,0);
+    lcd.print("Voltage :");
+    lcd.setCursor(11,0);
+    lcd.print(voltageFunction());
+    lcd.setCursor(0,1);
+    lcd.print(loops);
+    delay(1500);
+  
+  }
+
+  
   lcd.clear();
   /* .. for rpm .. */
   lcd.setCursor(0,0);
@@ -52,7 +69,7 @@ void loop() {
   lcd.print("Torque: ");
   lcd.setCursor(8,1); 
   lcd.print(TorqueFunction());  
-  lcd.setCursor(13,1);
+  lcd.setCursor(14,1);
   lcd.print("Nm");
 
 //  lcd.setCursor(11,0);
@@ -60,7 +77,7 @@ void loop() {
 //  lcd.setCursor(15,0);
 //  lcd.print("V");
   
-  delay(5000); //Refresh every 5 seconds
+  delay(2500); //Refresh every 5 seconds
 }
   
 
@@ -95,13 +112,14 @@ int RpmFunction(){
 /*********************************/
 
 
+  if (rpm_speed > 3100)  rpm_speed /= 2; 
  return rpm_speed;
 }
 
 
 
 
-int TorqueFunction(){
+float TorqueFunction(){
 
   int newton_meter_torque = 0;
   float analog_read_torque = 0;
@@ -111,7 +129,7 @@ int TorqueFunction(){
   delay(10);
 
   volt_torque = analog_read_torque * 5/1024;
-  newton_meter_torque = volt_torque * 2000/3.5; // volt_torque * valueoftorque@/valueofVolt@ ;
+  newton_meter_torque = volt_torque * 1.581787606/1.23; // volt_torque * valueoftorque@/valueofVolt@ ; 1 inch lbs 0.112984829 Nm
 
 
   /* for easy debugging with laptop or serial monitor */
@@ -138,7 +156,7 @@ float voltageFunction(){
   volts_analog = analogRead(VoltageSensor);
   float voltTemporal = (volts_analog * 5.0)/1024.0;
   
-  volts = voltTemporal/ (R2/(R1+R2));
+  volts = voltTemporal/(R2/(R1+R2));
   
   
 
