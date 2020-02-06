@@ -9,7 +9,7 @@ int TorqueSensor = A1;
 int VoltageSensor = A2;
 
 void setup() {
-    // put your setup code here, to run once:
+    // code runs once:
   pinMode(SpeedSensor, INPUT); //Sets Speed sensor pin as an input pin
   pinMode(TorqueSensor, INPUT); //Sets Toque sensor pin as an input pin 
   Serial.begin(9600); //sets up the baud rate for UART communication serial monitor of screen.
@@ -72,11 +72,6 @@ void loop() {
   lcd.setCursor(14,1);
   lcd.print("Nm");
 
-//  lcd.setCursor(11,0);
-//  lcd.print(voltageFunction() * 10);
-//  lcd.setCursor(15,0);
-//  lcd.print("V");
-  
   delay(2500); //Refresh every 5 seconds
 }
   
