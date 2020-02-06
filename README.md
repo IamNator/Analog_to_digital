@@ -6,6 +6,8 @@ Changes revolution and torque measurement from analog measuring equipment to dig
 2. Force Sensor Resistor (FSR)
 3. Voltage regulator 7805
 4. 100uF x2
+5. Voltage sensor
+6. 100k POT
 
 ### Circuit Diagram
 ![circuit diagram](https://github.com/IamNator/Analog_to_digital/blob/master/hardware/Schematic_Analog%20to%20digital%20Converter_Sheet.png)
