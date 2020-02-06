@@ -6,9 +6,9 @@ Changes revolution and torque measurement from analog measuring equipment to dig
 2. Liquid Crystal Display (LCD 16x2)
 3. I2C LCD adapter for arduino
 4. Force Sensor Resistor (FSR)
-5. Voltage regulator 7805
-6. 100uF x2
-7. Voltage sensor
+5. Voltage sensor
+6. Voltage regulator 7805
+7. 100uF x2
 8. 100k POT
 
 ### Circuit Diagram
