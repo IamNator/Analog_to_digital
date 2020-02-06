@@ -4,7 +4,7 @@ Changes revolution and torque measurement from analog measuring equipment to dig
 ## Components
 1. Arduino UNO
 2. Liquid Crystal Display (LCD 16x2)
-3. I2C LCD adapter for arduino
+3. I2C LCD adapter for arduino (I2C -- Inter-Integrated Circuit)
 4. Force Sensor Resistor (FSR)
 5. Voltage sensor
 6. Voltage regulator 7805
