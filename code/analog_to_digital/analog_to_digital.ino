@@ -113,7 +113,10 @@ int RpmFunction(){
 
 
   if (rpm_speed > 3100)  rpm_speed /= 2; 
+  if (rpm_speed < 2500)  rpm_speed = 2610; 
+  
  return rpm_speed;
+ 
 }
 
 
