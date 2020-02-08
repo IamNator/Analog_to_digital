@@ -83,11 +83,11 @@ int RpmFunction(){
     float analog_read_rpm = 0; //initialize speed value as zero
     float volt_speed;
     
-  //  for(int i=0; i<150; i++){
+    for(int i=0; i<150; i++){
     analog_read_rpm = analogRead(SpeedSensor); //reads speed value (range between 0 to 1024)
-  // }
+   }
     delay(15); 
-    //Speed_value = Speed_value/150;
+    Speed_value = Speed_value/150;
   
     volt_speed = (analog_read_rpm * 5)/1024; //5volts corresponds to a 1024 measured input
   // volt_speed = volt_speed/0.2; 
@@ -123,7 +123,11 @@ float TorqueFunction(){
   float analog_read_torque = 0;
   float volt_torque = 0;
 
-  analog_read_torque = analogRead(TorqueSensor); 
+  for (int j=0; j<150; j++){
+  analog_read_torque = analogRead(TorqueSensor);
+  }
+
+  analog_read_torque /= 150;
   delay(10);
 
   volt_torque = analog_read_torque * voltageFunction()/1024;
@@ -151,7 +155,10 @@ float voltageFunction(){
   float R1 = 7500, R2 = 30000;
   float volts=0;
   float volts_analog;
+  if (int j=0; j<150; j++){
   volts_analog = analogRead(VoltageSensor);
+  }
+  volts_analog /= 150;
   float voltTemporal = (volts_analog * 5.0)/1024.0;
   
   volts = voltTemporal/(R2/(R1+R2));
